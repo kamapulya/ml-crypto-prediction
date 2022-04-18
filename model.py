@@ -11,7 +11,7 @@ from utility import csv_to_dataset, history_points
 
 # dataset
 
-ohlcv_histories, _, next_day_open_values, unscaled_y, y_normaliser = csv_to_dataset('Binance_BTCUSDT_d.csv')
+ohlcv_histories, _, next_day_open_values, unscaled_y, y_normaliser = csv_to_dataset('data/Binance_BTCUSDT_d.csv')
 
 test_split = 0.9
 n = int(ohlcv_histories.shape[0] * test_split)
