@@ -1,9 +1,8 @@
-from alpha_vantage.timeseries import TimeSeries
 from pprint import pprint
 import json
 import argparse
 
-
+#TODO: переписать для скачивания криптоданных
 def save_dataset(symbol, time_window):
     credentials = json.load(open('creds.json', 'r'))
     api_key = credentials['av_api_key']
