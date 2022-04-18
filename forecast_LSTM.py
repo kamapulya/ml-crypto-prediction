@@ -119,7 +119,7 @@ BATCH_SIZE = 64
 history = model.fit(
     X_train, 
     y_train, 
-    epochs=20, 
+    epochs=50, 
     batch_size=BATCH_SIZE, 
     shuffle=False,
     validation_split=0.1
