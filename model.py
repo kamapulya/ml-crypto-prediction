@@ -6,7 +6,7 @@ import numpy as np
 np.random.seed(4)
 from tensorflow import set_random_seed
 set_random_seed(4)
-from util import csv_to_dataset, history_points
+from utility import csv_to_dataset, history_points
 
 
 # dataset
