@@ -19,12 +19,10 @@ from tensorflow.keras import optimizers
 from tensorflow.python.keras.layers import CuDNNLSTM
 from tensorflow.keras.models import Model
 
+#начальные параметры
 sns.set(style='whitegrid', palette='muted', font_scale=1.5)
-
 rcParams['figure.figsize'] = 14, 8
-
 RANDOM_SEED = 42
-
 np.random.seed(RANDOM_SEED)
 
 #Data preparation
@@ -53,7 +51,7 @@ scaled_close = scaled_close.reshape(-1, 1)
 np.isnan(scaled_close).any()
 
 #Preprocessing
-SEQ_LEN = 100
+SEQ_LEN = 50
 
 def to_sequences(data, seq_len):
     d = []
@@ -84,16 +82,13 @@ X_train, y_train, X_test, y_test = preprocess(scaled_close, SEQ_LEN, train_split
 #X_test.shape 
 
 #Model
-DROPOUT = 0.2
-
 WINDOW_SIZE = SEQ_LEN - 1
 
 lstm_input = Input(shape=(WINDOW_SIZE, X_train.shape[-1]), name='lstm_input')
-x = LSTM(50, name='lstm_0')(lstm_input)
-x = Dropout(0.2, name='lstm_dropout_0')(x)
-x = Dense(64, name='dense_0')(x)
-x = Activation('sigmoid', name='sigmoid_0')(x)
-x = Dense(1, name='dense_1')(x)
+x = LSTM(50, return_sequences=True, name='lstm_0')(lstm_input)
+x = LSTM(50, return_sequences=True, name='lstm_1')(x)
+x = LSTM(50, name='lstm_2')(x)
+x = Dense(1, name='dense_0')(x)
 output = Activation('linear', name='linear_output')(x)
 
 model = Model(inputs=lstm_input, outputs=output)
