@@ -27,7 +27,7 @@ stop_date = "30 Oct, 2021"
 interval = Client.KLINE_INTERVAL_1MINUTE
 
 #fetching the data
-df = get_gistorical_prices(symbol, Client.KLINE_INTERVAL_1MINUTE, start_date, stop_date)
+df = get_gistorical_prices(symbol, interval, start_date, stop_date)
 
 #convert to csv
 df.to_csv(symbol+'.csv', index = None, header=True)
